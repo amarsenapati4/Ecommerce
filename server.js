@@ -1,8 +1,9 @@
 import express from 'express';
-const colors =require('colors');
-const dotenv=require('dotenv');
-const morgan=require('morgan');
-const { default: connectDB } = require('./config/db');
+import Color  from 'colors';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import connectDB from './config/db.js';
+
 
 //config env
 dotenv.config();
