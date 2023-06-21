@@ -7,7 +7,7 @@ import { Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
 
 const Header =()=>{
   let Links =[
-    {name:"HOME",link:"/home"},
+    {name:"HOME",link:"/"},
     {name:"Category",link:"/category"},
     {name:"Register",link:"/register"},
     {name:"Login",link:"/login"},
