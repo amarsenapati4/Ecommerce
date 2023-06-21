@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {NavLink} from 'react-router-dom'
-import logo from '../img/REXdex copy.png'
+import logo from './REXdex copy.png'
 import { FaShoppingCart} from "react-icons/fa";
 import { Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
 
@@ -15,8 +15,8 @@ const Header =()=>{
   let [open, setOpen] =useState(false);
 
 return (
-    <div className='shadow-md w-full fixed top-0 left-0'>
-       <div className='md:flex items-center justify-between bg-lime-300 py-4 md:px-10 px-7'>
+    <div className='shadow-2xl w-full fixed top-0 left-0'>
+       <div className='md:flex items-center justify-between bg-lime-300  md:px-10 px-6'>
        <img src={logo} alt={"logo"} className='pl-8 py-4 h-[5rem]'/>
         {/* Menu icon */}
         <div onClick={()=>setOpen(!open)} className='absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7'>
