@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import logo from '../img/REXdex copy.png'
+import { FaShoppingCart} from "react-icons/fa";
 
 const Header =()=>{
     return (
@@ -14,7 +15,7 @@ const Header =()=>{
       <NavLink to="/Category" className="hover:bg-gray-200 py-4 px-6">Category</NavLink>
       <NavLink to="/register" className="hover:bg-gray-200 py-4 px-6">Register</NavLink>
       <NavLink to="/login" className="hover:bg-gray-200 py-4 px-6">Login</NavLink>
-      <NavLink to="/cart" className="hover:bg-gray-200 py-4 px-6">Cart(0)</NavLink>
+      <NavLink to="/cart" className="hover:bg-gray-200 py-4 px-6 flex justify-center items-center"><FaShoppingCart/>(0)</NavLink>
      </ul>
      <button className='block md:hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-gray-200 group'>
       <div className='w-5 h-1 bg-gray-600 mb-1'></div>
@@ -26,7 +27,7 @@ const Header =()=>{
         <NavLink to="/Category" className="hover:bg-gray-200 py-4 px-6 w-full">Category</NavLink>
       <NavLink to="/register" className="hover:bg-gray-200 py-4 px-6 w-full">Register</NavLink>
       <NavLink to="/login" className="hover:bg-gray-200 py-4 px-6 w-full">Login</NavLink>
-      <NavLink to="/cart" className="hover:bg-gray-200 py-4 px-6 w-full">Cart(0)</NavLink>
+      <NavLink to="/cart" className="hover:bg-gray-200 py-4 px-6 w-full flex justify-center items-center text-[18px]"><FaShoppingCart/>(0)</NavLink>
         </ul>
 
       </div>
