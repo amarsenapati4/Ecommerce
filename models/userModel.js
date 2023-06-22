@@ -24,7 +24,7 @@ required:true
         type:String,
         required:true
      },
-     question:{
+     answer:{
       type:String,
       required:true
      },
