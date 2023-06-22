@@ -19,9 +19,10 @@ const Register = () => {
         { name, email, password, phone,address}
       );
       if (res && res.data.success) {
-        alert(res.data.message);
-        toast.success(res.data.message);
         navigate("/login");
+        setTimeout(() => {
+          toast.success(res.data.message);
+        }, 1000);
       } else {
         toast.error(res.data.message);
       }

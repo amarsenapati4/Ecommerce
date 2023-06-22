@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import toast from 'react-hot-toast';
 import axios from "axios";
+import { useAuth } from "../../Context/auth";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [auth,setAuth]=useAuth()
 
   const navigate = useNavigate();
   //form sumbit
@@ -18,9 +20,17 @@ const Login = () => {
         {email, password}
       );
       if (res && res.data.success) {
-        alert(res.data.message);
-        toast.success(res.data.message);
+        setAuth({
+          ...auth,
+          user:res.data.user,
+          token:res.data.token,
+        });
+        localStorage.setItem('auth',JSON.stringify(res.data));
         navigate("/");
+        setTimeout(() => {
+          toast.success(res.data.message);
+          
+        },1000);
       } else {
         toast.error(res.data.message);
       }
