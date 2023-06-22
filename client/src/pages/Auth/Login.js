@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import toast from 'react-hot-toast';
 import axios from "axios";
 import { useAuth } from "../../Context/auth";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
 
   const [email, setEmail] = useState("");
@@ -11,6 +11,7 @@ const Login = () => {
   const [auth,setAuth]=useAuth()
 
   const navigate = useNavigate();
+  const location = useLocation();
   //form sumbit
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -108,6 +109,10 @@ const Login = () => {
               >
                 Login
               </button>
+              <div className=" w-full text-center hover:text-blue-600 text-red-600">
+              <NavLink to="/forgot-password" >forgot password?</NavLink>
+
+              </div>
             </form>
           </div>
         </div>
