@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast';
     return (
         <div>
             <Header/>
-            <main style={{minHeight:'80vh'}}>
+            <main style={{minHeight:'90vh'}}>
             <Toaster />
             {children}</main>
             <Footer></Footer>
