@@ -2,8 +2,10 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import logo from '../img/REXdex copy.png'
 import { FaShoppingCart} from "react-icons/fa";
+import { useAuth } from "../../Context/auth";
 
 const Header =()=>{
+  const [auth,setAuth]=useAuth()
     return (
         <>
         
