@@ -27,6 +27,7 @@ const Header =()=>{
     {name:"Login",link:"/login"},
   ];
   let [open, setOpen] =useState(false);
+  let [dropOpen,setDropOpen]=useState(false);
 
 return (
     <div className='shadow-2xl w-full fixed top-0 left-0'>
@@ -48,7 +49,26 @@ return (
              <NavLink to="/login" className='md:ml-8 md:my-0 my-7  flex '>Login</NavLink>
                 </>):(
                     <>
-                     <NavLink onClick={handelLogout} to="/login" className='md:ml-8 md:my-0 my-7  flex '>Logout</NavLink>
+             <li className='md:ml-8 md:my-0 my-7  flex flex-col'>
+
+  <button id="dropdownNavbarLink" onClick={()=>setDropOpen(!dropOpen)} data-dropdown-toggle="dropdownNavbar" className="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0 font-medium flex items-center justify-between w-full md:w-auto">{auth?.user?.name} <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg></button>
+  {/* Dropdown menu */}
+  <div id="dropdownNavbar"  className={`${dropOpen ? 'hidden': 'flex flex-col'} bg-white text-base  list-none divide-y divide-gray-100 rounded shadow-2xl my-6 w-40 absolute`}>
+    <ul className="py-1" aria-labelledby="dropdownLargeButton">
+      <li>
+       <NavLink to={`/dashboard/${auth?.user?.role==1?"admin":"user"}`} className='md:ml-8 md:my-0 my-7  flex '>DashBoard</NavLink>
+      </li>
+    </ul>
+    <div className="py-1">
+    <NavLink onClick={handelLogout} to="/login" className='md:ml-8 md:my-0 my-7  flex '>Logout</NavLink>
+    </div>
+  </div>
+
+             </li>
+             
+
+
+                   
                     </>
                 )
              }

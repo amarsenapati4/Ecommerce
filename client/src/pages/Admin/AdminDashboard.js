@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 
 const AdminDashboard = () => {
   return (
-    <Layout>AdminDashboard</Layout>
+    <Layout><h1>AdminDashboard</h1></Layout>
   )
 }
 
