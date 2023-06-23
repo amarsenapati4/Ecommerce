@@ -4,7 +4,7 @@ import AdminMenue from '../../components/Layout/AdminMenue'
 
 const Users = () => {
   return (
-    <Layout>
+    <Layout title={"Dashboard all users"}>
     <div className="row mt-[6rem] ml-10">
         <div className="col-md-3 flex">
             <AdminMenue/>

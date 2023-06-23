@@ -4,7 +4,7 @@ import AdminMenue from '../../components/Layout/AdminMenue'
 
 const CreateCategory = () => {
   return (
-    <Layout>
+    <Layout title={"Dashboard Category"}>
         <div className="row mt-[6rem] ml-10">
             <div className="col-md-3 flex">
                 <AdminMenue/>
