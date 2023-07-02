@@ -28,7 +28,7 @@ const Products = () => {
         <div className="mt-[2rem]">
           <AdminMenu />
         </div>
-        <div className="flex flex-wrap flex-col w-full overflow-scroll relative">
+        <div className="flex flex-wrap flex-col w-full overflow-scroll relative h-fit">
           <h1 className="text-center te">All Products List</h1>
           <div className="d-flex">
             {products?.map((p) => (

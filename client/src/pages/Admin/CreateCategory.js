@@ -88,7 +88,7 @@ const CreateCategory = () => {
   };
   return (
     <Layout title={"Dashboard Category"}>
-      <div className="row mt-[6rem] ml-10">
+      <div className="mt-[6rem] ml-10">
         <div className="col-md-3 flex">
           <AdminMenue />
         </div>

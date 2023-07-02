@@ -65,7 +65,7 @@ const CreateProduct = () => {
     <Layout title={"Dashboard - Create Product"}>
     <div className="container-fluid mt-[6rem] ml-10">
       <div className="row">
-        <div className="col-md-3">
+        <div className="col-md-3 flex">
           <AdminMenue/>
         </div>
         <div className="col-md-9">
