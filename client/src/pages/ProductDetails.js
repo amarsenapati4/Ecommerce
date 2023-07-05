@@ -41,10 +41,9 @@ const ProductDetails = () => {
         <div className="col-md-6">
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
-            className="card-img-top"
+            className="card-img-top w-full max-w-[480px] aspect-square m-auto"
             alt={product.name}
-            height="300"
-            width={"350px"}
+           
           />
         </div>
         <div className="col-md-6 ">
@@ -62,14 +61,16 @@ const ProductDetails = () => {
         {relatedProducts.length < 1 && (
           <p className="text-center">No Similar Products found</p>
         )}
-        <div className="d-flex flex-wrap">
+        <div className="flex flex-wrap">
           {relatedProducts?.map((p) => (
             <div className="card m-2" style={{ width: "18rem" }}>
+              {/* <div className="w-full max-w-[180px] aspect-square m-auto"> */}
               <img
                 src={`/api/v1/product/product-photo/${p?._id}`}
                 className="card-img-top"
                 alt={p.name}
               />
+              {/* </div> */}
               <div className="card-body">
                 <h5 className="card-title">{p.name}</h5>
                 <p className="card-text">{p.description.substring(0, 30)}...</p>
