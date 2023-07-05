@@ -38,7 +38,7 @@ const Header = () => {
       <div className='md:flex items-center justify-between bg-lime-300  md:px-10 px-6'>
         <img src={logo} alt={"logo"} className='pl-8 py-4 h-[5rem]' />
         {/* Menu icon */}
-        <div onClick={() => setOpen(!open)} className='absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7'>
+        <div onClick={() => setOpen(!open)} className='absolute right-12 top-6 cursor-pointer md:hidden w-7 h-7'>
           {
             open ? <XMarkIcon /> : <Bars3BottomRightIcon />
           }
