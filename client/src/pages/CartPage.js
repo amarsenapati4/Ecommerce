@@ -37,7 +37,7 @@ const CartPage = () => {
   };
   return (
     <Layout>
-      <div className="container">
+      <div className="container mt-[6rem]">
         <div className="row">
           <div className="col-md-12">
             <h1 className="text-center bg-light p-2 mb-1">
