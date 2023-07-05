@@ -33,8 +33,8 @@ const Header = () => {
     { name: "Login", link: "/login" },
   ];
   let [open, setOpen] = useState(false);
-  let [dropOpen, setDropOpen] = useState(true);
-  let [categorydropOpen,setcategoryDropOpen]=useState(true);
+
+ 
 
   return (
     <div className='shadow-2xl z-50 w-full fixed top-0 left-0'>
@@ -125,9 +125,11 @@ const Header = () => {
                   </li>
                 </>
               )}
+              <div className='mr-6'>
                <Badge count={cart?.length} showZero>
           <NavLink to="/cart" className=' md:my-0 flex mr-2 pr-0'><FaShoppingCart /></NavLink>
           </Badge>
+          </div>
           <div className='w-full flex justify-start'>
             <SearchInput className="mr-4" />
           </div>
