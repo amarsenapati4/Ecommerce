@@ -53,7 +53,7 @@ const Login = () => {
     <div className="login-container">
       <p className="title">Welcome back</p>
       <div className="separator" />
-      <p className="welcome-message">Please, provide login credential to proceed and have access to all our services</p>
+      <p className="welcome-message">Please, provide login credential to proceed and have access to all our Products</p>
       <form className="login-form" onSubmit={handelSubmit}>
         <div className="form-control2">
           <input className="input1" type="email" placeholder="Username"  value={email}
