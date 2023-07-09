@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "./../components/Layout/Layout";
 import { useCart } from "../Context/cart";
 import { useAuth } from "../Context/auth";
+import toast from "react-hot-toast";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
 
   //total price
   const totalPrice = () => {
@@ -35,6 +39,51 @@ const CartPage = () => {
       console.log(error);
     }
   };
+  //payment handeler
+  
+  const handlePayment = async (amount) => {
+    try{
+    setLoading(true);
+    const { data: { key } } = await axios.get("/api/v1/getkey")
+
+    const { data: { order } } = await axios.post("/api/v1/payment/checkout", {
+           amount
+    });
+
+    const options = {
+        key,
+        amount: order.amount,
+        currency: "INR",
+        name: "6 Pack Programmer",
+        description: "Tutorial of RazorPay",
+        image: "https://avatars.githubusercontent.com/u/25058652?v=4",
+        order_id: order.id,
+        callback_url: "/api/v1/payment/paymentverification",
+        prefill: {
+            name: "Gaurav Kumar",
+            email: "gaurav.kumar@example.com",
+            contact: "9999999999"
+        },
+        notes: {
+            "address": "Razorpay Corporate Office"
+        },
+        theme: {
+            "color": "#121212"
+        }
+    };
+    const razor = new window.Razorpay(options);
+    razor.open();
+    setLoading(false);
+    localStorage.removeItem("cart");
+    setCart([]);
+    navigate("/dashboard/user/orders");
+    toast.success("Payment Completed Successfully ");
+  }
+  catch (error) {
+    console.log(error);
+    setLoading(false);
+  }
+};
   return (
     <Layout>
       <div className="container mt-[6rem]">
@@ -83,7 +132,7 @@ const CartPage = () => {
             <h2>Cart Summary</h2>
             <p>Total | Checkout | Payment</p>
             <hr />
-            <h4>Total : {totalPrice()} </h4>
+            <h4 >Total : {totalPrice()} </h4>
             {auth?.user?.address ? (
               <>
                 <div className="mb-3">
@@ -120,6 +169,29 @@ const CartPage = () => {
                 )}
               </div>
             )}
+            <div className="mt-2">
+              {!cart?.length ? (
+                ""
+              ) : (
+                <>
+                  <button
+                    className="btn btn-primary"
+                    
+                    onClick={()=>
+                    {
+                      let total = 0;
+                      cart?.map((item) => {
+                        total = total + item.price;
+                      })
+                      handlePayment(total);
+                    }}
+                    disabled={loading || !auth?.user?.address}
+                  >
+                    {loading ? "Processing ...." : "Make Payment"}
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
