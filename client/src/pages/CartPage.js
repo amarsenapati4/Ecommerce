@@ -4,6 +4,7 @@ import { useCart } from "../Context/cart";
 import { useAuth } from "../Context/auth";
 import toast from "react-hot-toast";
 import axios from "axios";
+import rexdex from "./../img/REXdex copy.png"
 import { useNavigate } from "react-router-dom";
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
@@ -54,9 +55,9 @@ const CartPage = () => {
         key,
         amount: order.amount,
         currency: "INR",
-        name: "6 Pack Programmer",
-        description: "Tutorial of RazorPay",
-        image: "https://avatars.githubusercontent.com/u/25058652?v=4",
+        name: "REX DEX",
+        description: "Payment Gateway of REX DEX sports shop",
+        image: {rexdex},
         order_id: order.id,
         callback_url: "/api/v1/payment/paymentverification",
         prefill: {
