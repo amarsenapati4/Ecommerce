@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import { useCart } from "../Context/cart";
 import { useAuth } from "../Context/auth";
@@ -6,11 +6,14 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import rexdex from "./../img/REXdex copy.png"
 import { useNavigate } from "react-router-dom";
+import DropIn from "braintree-web-drop-in-react";
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
-  const navigate = useNavigate();
+  const [clientToken, setClientToken] = useState("");
+  const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
 
   //total price
@@ -40,47 +43,34 @@ const CartPage = () => {
       console.log(error);
     }
   };
-  //payment handeler
-  
-  const handlePayment = async (amount) => {
-    try{
+//get payment gateway token
+const getToken = async () => {
+  try {
+    const { data } = await axios.get("/api/v1/product/braintree/token");
+    setClientToken(data?.clientToken);
+  } catch (error) {
+    console.log(error);
+  }
+};
+useEffect(() => {
+  getToken();
+}, [auth?.token]);
+
+//handle payments
+const handlePayment = async () => {
+  try {
     setLoading(true);
-    const { data: { key } } = await axios.get("/api/v1/getkey")
-
-    const { data: { order } } = await axios.post("/api/v1/payment/checkout", {
-           amount
+    const { nonce } = await instance.requestPaymentMethod();
+    const { data } = await axios.post("/api/v1/product/braintree/payment", {
+      nonce,
+      cart,
     });
-
-    const options = {
-        key,
-        amount: order.amount,
-        currency: "INR",
-        name: "REX DEX",
-        description: "Payment Gateway of REX DEX sports shop",
-        image: {rexdex},
-        order_id: order.id,
-        callback_url: "/api/v1/payment/paymentverification",
-        prefill: {
-            name: "Gaurav Kumar",
-            email: "gaurav.kumar@example.com",
-            contact: "9999999999"
-        },
-        notes: {
-            "address": "Razorpay Corporate Office"
-        },
-        theme: {
-            "color": "#121212"
-        }
-    };
-    const razor = new window.Razorpay(options);
-    razor.open();
     setLoading(false);
     localStorage.removeItem("cart");
     setCart([]);
     navigate("/dashboard/user/orders");
     toast.success("Payment Completed Successfully ");
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
     setLoading(false);
   }
@@ -170,23 +160,25 @@ const CartPage = () => {
                 )}
               </div>
             )}
-            <div className="mt-2">
-              {!cart?.length ? (
+           <div className="mt-2">
+              {!clientToken || !cart?.length ? (
                 ""
               ) : (
                 <>
+                  <DropIn
+                    options={{
+                      authorization: clientToken,
+                      paypal: {
+                        flow: "vault",
+                      },
+                    }}
+                    onInstance={(instance) => setInstance(instance)}
+                  />
+
                   <button
                     className="btn btn-primary"
-                    
-                    onClick={()=>
-                    {
-                      let total = 0;
-                      cart?.map((item) => {
-                        total = total + item.price;
-                      })
-                      handlePayment(total);
-                    }}
-                    disabled={loading || !auth?.user?.address}
+                    onClick={handlePayment}
+                    disabled={loading || !instance || !auth?.user?.address}
                   >
                     {loading ? "Processing ...." : "Make Payment"}
                   </button>
