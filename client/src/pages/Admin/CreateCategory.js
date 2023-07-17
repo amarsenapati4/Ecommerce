@@ -88,7 +88,7 @@ const CreateCategory = () => {
   };
   return (
     <Layout title={"Dashboard Category"}>
-      <div className="mt-[6rem] ml-10">
+      <div className="mt-[6rem] ml-10 flex md:flex-row flex-col">
         <div className="col-md-3 flex">
           <AdminMenue />
         </div>
@@ -114,7 +114,7 @@ const CreateCategory = () => {
                   <>
                     <tr>
                       <td key={c._id}>{c.name}</td>
-                      <td>
+                      <td className='flex'>
                         <button
                           className="btn btn-primary ms-2"
                           onClick={() => {

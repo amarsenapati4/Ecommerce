@@ -73,6 +73,9 @@ const AdminOrders = () => {
                     Payment
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Transaction_id
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Quantity
                 </th>
 
@@ -103,6 +106,9 @@ const AdminOrders = () => {
                 </td>
                 <td class="px-6 py-4">
        {o?.payment.success ? "Success" : "Failed"}
+                </td>
+                <td class="px-6 py-4">
+       {o?.payment.transaction.id ? "Success" : "Failed"}
                 </td>
                 <td class="px-6 py-4">
       {o?.products?.length}

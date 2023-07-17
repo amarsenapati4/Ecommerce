@@ -52,6 +52,9 @@ const Orders = () => {
                     Payment
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Transaction_id
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Quantity
                 </th>
 
@@ -73,6 +76,9 @@ const Orders = () => {
                 </td>
                 <td class="px-6 py-4">
        {o?.payment.success ? "Success" : "Failed"}
+                </td>
+                <td class="px-6 py-4">
+       {o?.payment.transaction.id}
                 </td>
                 <td class="px-6 py-4">
       {o?.products?.length}
