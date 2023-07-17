@@ -50,9 +50,9 @@ const Header = () => {
 
         <ul className={` md:flex  md:items-center md:pb-0 pb-12 absolute md:static bg-lime-300 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-13' : 'top-[-490px]'}`}>
           <NavLink to="/" className='md:ml-8 md:my-0 font-bold flex '>Home</NavLink>
-          <li className="nav-item dropdown pr-0">
+          <li className="dropdown md:pt-2 md:p-2 ">
                 <Link
-                  className="nav-link dropdown-toggle text-black"
+                  className=" dropdown-toggle text-black"
                   to={"/categories"}
                   data-bs-toggle="dropdown"
                 >
