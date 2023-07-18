@@ -109,6 +109,7 @@ const handlePayment = async () => {
                   <p>{p.name}</p>
                   <p>{p.description.substring(0, 30)}</p>
                   <p>Price : {p.price}</p>
+                  <h5 className="card-title">Number of product Available in Stock:{p.quantity}</h5>
                   <button
                     className="btn btn-danger"
                     onClick={() => removeCartItem(p._id)}

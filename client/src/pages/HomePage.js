@@ -208,9 +208,9 @@ const HomePage = () => {
           </div>
           <div className="col-md-9">
             <h1 className="text-center text-3xl mb-2 text-red-600">All Products</h1>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap w-full justify-center items-center">
               {products?.map((p) => (
-                <div className="card m-2" style={{ width: "18rem" }}>
+                <div className="card m-3" style={{ width: "18rem" }}>
                   <img
                     src={`/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
@@ -223,6 +223,7 @@ const HomePage = () => {
                     </p>
                     <p className="card-text"> ₹ {p.price}</p>
                     <h5 className="card-title">Status:{p.quantity>0 ? 'IN STOCK':'OUT OF STOCK'}</h5>
+                    <div className='flex flex-row'>
                     <button class="btn btn-primary ms-1" onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
                     {p.quantity>0 ? (
                       <>
@@ -240,7 +241,7 @@ const HomePage = () => {
                           <button class="btn btn-secondary ms-1 " disabled>ADD TO CART</button>
                       </>
                     )}
-                
+                </div>
                   </div>
                 </div>
               ))}
