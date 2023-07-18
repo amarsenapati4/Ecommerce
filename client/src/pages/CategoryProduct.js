@@ -52,22 +52,29 @@ const CategoryProduct = () => {
                       {p.description.substring(0, 30)}...
                     </p>
                     <p className="card-text"> ₹ {p.price}</p>
+                    <h5 className="card-title">Status:{p.quantity>0 ? 'IN STOCK':'OUT OF STOCK'}</h5>
                     <button
                       className="btn btn-primary ms-1"
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details
                     </button>
-                    <button className="btn btn-secondary ms-1"  onClick={() => {
+                    {p.quantity>0 ? (
+                      <>
+                          <button class="btn btn-secondary ms-1" onClick={() => {
                       setCart([...cart, p]);
                       localStorage.setItem(
                         "cart",
                         JSON.stringify([...cart, p])
                       );
                       toast.success("Item Added to cart");
-                    }}>
-                      ADD TO CART
-                    </button>
+                    }}>ADD TO CART</button>
+                      </>
+                    ):(
+                      <>
+                          <button class="btn btn-secondary ms-1 " disabled>ADD TO CART</button>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
