@@ -24,13 +24,13 @@ const Products = () => {
   }, []);
   return (
     <Layout>
-      <div className="flex flex-row mt-[6rem] ml-10 ">
+      <div className="flex flex-nowrap   md:flex-row flex-col mt-[6rem] ml-10 ">
         <div className="mt-[2rem]">
           <AdminMenu />
         </div>
         <div className="flex flex-wrap flex-col w-full overflow-scroll relative h-fit">
           <h1 className="text-center te">All Products List</h1>
-          <div className="d-flex">
+          <div className="flex flex-wrap">
             {products?.map((p) => (
               <Link
                 key={p._id}

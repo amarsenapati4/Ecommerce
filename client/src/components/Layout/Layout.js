@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast';
     return (
         <div>
             <Header/>
-            <main style={{minHeight:'90vh'}}>
+            <main style={{minHeight:'70vh'}} className='overflow-hidden'>
             <Toaster />
             {children}</main>
             <Footer></Footer>
