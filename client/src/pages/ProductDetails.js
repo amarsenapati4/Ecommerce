@@ -55,7 +55,23 @@ const ProductDetails = () => {
           <h6>Description : {product.description}</h6>
           <h6>Price : {product.price}</h6>
           <h6>Category : {product?.category?.name}</h6>
-          <button class="btn btn-secondary ms-1">ADD TO CART</button>
+          <h6 className="card-title">Status:{product.quantity>0 ? 'IN STOCK':'OUT OF STOCK'}</h6>
+          {product.quantity>0 ? (
+                      <>
+                          <button class="btn btn-secondary ms-1" onClick={() => {
+                      setCart([...cart, product]);
+                      localStorage.setItem(
+                        "cart",
+                        JSON.stringify([...cart, product])
+                      );
+                      toast.success("Item Added to cart");
+                    }}>ADD TO CART</button>
+                      </>
+                    ):(
+                      <>
+                          <button class="btn btn-secondary ms-1 " disabled>ADD TO CART</button>
+                      </>
+                    )}
         </div>
       </div>
       <hr />
@@ -78,13 +94,16 @@ const ProductDetails = () => {
                 <h5 className="card-title">{p.name}</h5>
                 <p className="card-text">{p.description.substring(0, 30)}...</p>
                 <p className="card-text"> ₹ {p.price}</p>
+                <h5 className="card-title">Status:{p.quantity>0 ? 'IN STOCK':'OUT OF STOCK'}</h5>
                 <button
                   className="btn btn-primary ms-1"
                   onClick={() => navigate(`/product/${p.slug}`)}
                 >
                   More Details
                 </button>
-                <button class="btn btn-secondary ms-1"  onClick={() => {
+                {p.quantity>0 ? (
+                      <>
+                          <button class="btn btn-secondary ms-1" onClick={() => {
                       setCart([...cart, p]);
                       localStorage.setItem(
                         "cart",
@@ -92,6 +111,12 @@ const ProductDetails = () => {
                       );
                       toast.success("Item Added to cart");
                     }}>ADD TO CART</button>
+                      </>
+                    ):(
+                      <>
+                          <button class="btn btn-secondary ms-1 " disabled>ADD TO CART</button>
+                      </>
+                    )}
               </div>
             </div>
           ))}
