@@ -108,7 +108,7 @@ const AdminOrders = () => {
        {o?.payment.success ? "Success" : "Failed"}
                 </td>
                 <td class="px-6 py-4">
-       {o?.payment.transaction.id ? "Success" : "Failed"}
+       {o?.payment.transaction.id}
                 </td>
                 <td class="px-6 py-4">
       {o?.products?.length}

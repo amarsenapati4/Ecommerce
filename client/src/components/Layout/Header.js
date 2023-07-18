@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <div className='shadow-2xl z-50 w-full fixed top-0 left-0'>
-      <div className='md:flex items-center justify-between bg-lime-300  md:px-10 px-6'>
+      <div className='md:flex items-center justify-between bg-teal-400  md:px-10 px-6'>
         <img src={logo} alt={"logo"} className='pl-8 py-4 h-[5rem]' />
         {/* Menu icon */}
         <div onClick={() => setOpen(!open)} className='absolute right-12 top-6 cursor-pointer md:hidden w-7 h-7'>
@@ -48,7 +48,7 @@ const Header = () => {
         </div>
         {/* linke items */}
 
-        <ul className={` md:flex  md:items-center md:pb-0 pb-12 absolute md:static bg-lime-300 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-13' : 'top-[-490px]'}`}>
+        <ul className={` md:flex  md:items-center md:pb-0 pb-12 absolute md:static bg-teal-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-13' : 'top-[-490px]'}`}>
           <NavLink to="/" className='md:ml-8 md:my-0 font-bold flex '>Home</NavLink>
           <li className="dropdown md:pt-2 md:p-2 ">
                 <Link
@@ -79,12 +79,12 @@ const Header = () => {
               {!auth?.user ? (
                 <>
                   <li className="nav-item">
-                    <NavLink to="/register" className="nav-link">
+                    <NavLink to="/register" className="nav-link text-black">
                       Register
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/login" className="nav-link">
+                    <NavLink to="/login" className="nav-link text-black">
                       Login
                     </NavLink>
                   </li>

@@ -148,14 +148,14 @@ const handlePayment = async () => {
                   </button>
                 ) : (
                   <button
-                    className="btn btn-outline-warning"
+                    className="btn btn-outline-info"
                     onClick={() =>
                       navigate("/login", {
                         state: "/cart",
                       })
                     }
                   >
-                    Plase Login to checkout
+                    Please Login to checkout
                   </button>
                 )}
               </div>
