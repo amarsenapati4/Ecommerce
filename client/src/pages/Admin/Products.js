@@ -46,6 +46,7 @@ const Products = () => {
                   <div className="card-body overflow-hidden">
                     <h5 className="card-title">{p.name}</h5>
                     <p className="card-text">{p.description}</p>
+                    <h5 className="card-title">Quantityleft:{p.quantity}</h5>
                   </div>
                 </div>
               </Link>
